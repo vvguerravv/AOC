@@ -13,6 +13,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>aula1.ASM</itemPath>
+      <itemPath>registradores.asm</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1024,7 +1025,7 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Tool>
-      <item path="aula1.ASM" ex="false" overriding="false">
+      <item path="aula1.ASM" ex="true" overriding="false">
         <AVR-ASM>
         </AVR-ASM>
         <AVR-Global>

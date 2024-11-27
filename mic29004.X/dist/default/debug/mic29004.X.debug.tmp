@@ -6,7 +6,7 @@
   <DIR>/opt/microchip/mplabx/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>aula1.ASM</SOURCE_FILE>
+ <SOURCE_FILE>registradores.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>/opt/microchip/mplabx/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc/m328Pdef.inc</FILE>
  </INCLUDED_FILES>
@@ -14,13 +14,12 @@
   <FILE>dist/default/debug/mic29004.X.debug.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
-  <FILE>aula1.hex</FILE>
+  <FILE>registradores.hex</FILE>
  </HEX_FILES>
  <OUTPUT_FILES>
   <FILE>dist/default/debug/mic29004.X.debug.map</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <label><FILE>aula1.ASM</FILE><LINE>2</LINE></label>
-  <start><FILE>aula1.ASM</FILE><LINE>5</LINE></start>
+  <start><FILE>registradores.asm</FILE><LINE>2</LINE></start>
  </LABELS>
 </ASSEMBLER_INFO>

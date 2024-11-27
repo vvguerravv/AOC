@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=aula1.ASM
+SOURCEFILES_QUOTED_IF_SPACED=registradores.asm
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/aula1.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/aula1.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/registradores.obj
+POSSIBLE_DEPFILES=${OBJECTDIR}/registradores.obj.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/aula1.o
+OBJECTFILES=${OBJECTDIR}/registradores.obj
 
 # Source Files
-SOURCEFILES=aula1.ASM
+SOURCEFILES=registradores.asm
 
 # Pack Options 
 PACK_ASSEMBLER_OPTIONS=-I "${DFP_DIR}/avrasm/inc"  -i m328Pdef.inc
@@ -90,17 +90,17 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/aula1.o: aula1.ASM  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/registradores.obj: registradores.asm  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} ${DISTDIR} 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/aula1.o 
-	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp aula1.ASM
+	@${RM} ${OBJECTDIR}/registradores.obj 
+	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp registradores.asm
 else
-${OBJECTDIR}/aula1.o: aula1.ASM  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/registradores.obj: registradores.asm  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} ${DISTDIR} 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/aula1.o 
-	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp  -o ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.hex  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -l ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.lss aula1.ASM
+	@${RM} ${OBJECTDIR}/registradores.obj 
+	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp  -o ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.hex  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -l ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.lss registradores.asm
 endif
 
 # ------------------------------------------------------------------------------------
