@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  registradores.asm Wed Nov 27 09:17:05 2024
+AVRASM ver. 2.2.7  registradores.asm Wed Dec 11 08:23:48 2024
 
 [builtin](2): Including file '/opt/microchip/mplabx/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc/m328Pdef.inc'
                                  
@@ -984,19 +984,26 @@ AVRASM ver. 2.2.7  registradores.asm Wed Nov 27 09:17:05 2024
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
-                                 start:
+                                 ;start:
                                  ;    ldi R16,0x14 //opcode = 1110 0001 0000 0100
                                  ;    ldi R17,25
                                  ;    ldi R18,0b0010_0011
                                  ;    subi r19,-50
                                  ;    inc r0
                                  ;    clr r0
-                                 ;       
+                                 ;       rjmp start
                                      
-000000 9403                          inc r0
-000001 2c10                          mov r1, r0
-000002 9403                          inc r0
-000003 0110                          movw r2,r0
+                                 ;    inc r0
+                                 ;    mov r1, r0
+                                 ;    inc r0
+                                 ;    movw r2,r0
+                                     
+                                     .DEF temp=r16
+                                     .EQU valor=0x23+5
+                                     start:
+000000 e208                          ldi temp, valor ; inicialize o reg. temp com valor
+000001 9503                          inc temp ; incrementa o reg. temp
+000002 cffd                          rjmp start
 
 
 RESOURCE USE INFORMATION
@@ -1014,12 +1021,12 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega328P" register use summary:
-x  :   0 y  :   0 z  :   0 r0 :   4 r1 :   1 r2 :   1 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   0 r17:   0 r18:   0 r19:   0 r20:   0 
+r13:   0 r14:   0 r15:   0 r16:   2 r17:   0 r18:   0 r19:   0 r20:   0 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 3 out of 35 (8.6%)
+Registers used: 1 out of 35 (2.9%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
@@ -1031,9 +1038,9 @@ brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   2 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :   0 lds   :   0 lpm   :   0 lsl   :   0 
-lsr   :   0 mov   :   1 movw  :   1 mul   :   0 muls  :   0 mulsu :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   1 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :   1 lds   :   0 lpm   :   0 lsl   :   0 
+lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   0 pop   :   0 
 push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   1 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
@@ -1041,13 +1048,21 @@ sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 4 out of 113 (3.5%)
+Instructions used: 3 out of 113 (2.7%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00000a     10      0     10   32768   0.0%
+[.cseg] 0x000000 0x000006      6      0      6   32768   0.0%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
+[.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
+
+Assembly complete, 0 errors, 0 warnings
+use summary [bytes]:
+Segment   Begin    End      Code   Data   Used    Size   Use%
+---------------------------------------------------------------
+[.cseg] 0x000000 0x00001e     30      0     30   32768   0.1%
+[.dseg] 0x000100 0x000106      0      6      6    2048   0.3%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
 Assembly complete, 0 errors, 0 warnings

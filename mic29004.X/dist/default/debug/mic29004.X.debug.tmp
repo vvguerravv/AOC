@@ -6,7 +6,7 @@
   <DIR>/opt/microchip/mplabx/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>registradores.asm</SOURCE_FILE>
+ <SOURCE_FILE>vetores.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>/opt/microchip/mplabx/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc/m328Pdef.inc</FILE>
  </INCLUDED_FILES>
@@ -14,12 +14,18 @@
   <FILE>dist/default/debug/mic29004.X.debug.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
-  <FILE>registradores.hex</FILE>
+  <FILE>vetores.hex</FILE>
  </HEX_FILES>
  <OUTPUT_FILES>
   <FILE>dist/default/debug/mic29004.X.debug.map</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <start><FILE>registradores.asm</FILE><LINE>18</LINE></start>
+  <A1><FILE>vetores.asm</FILE><LINE>3</LINE></A1>
+  <A2><FILE>vetores.asm</FILE><LINE>4</LINE></A2>
+  <A3><FILE>vetores.asm</FILE><LINE>5</LINE></A3>
+  <A4><FILE>vetores.asm</FILE><LINE>6</LINE></A4>
+  <start><FILE>vetores.asm</FILE><LINE>10</LINE></start>
+  <init_A2_A3><FILE>vetores.asm</FILE><LINE>19</LINE></init_A2_A3>
+  <sum_seq><FILE>vetores.asm</FILE><LINE>36</LINE></sum_seq>
  </LABELS>
 </ASSEMBLER_INFO>

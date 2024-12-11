@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  registradores.asm Wed Nov 27 09:17:05 2024
+AVRASM ver. 2.2.7  registradores.asm Wed Dec 11 08:23:48 2024
 
 
 EQU  SIGNATURE_000 0000001e
@@ -695,4 +695,6 @@ EQU  ACIaddr      0000002e
 EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
+DEF  temp         r16
+EQU  valor        00000028
 CSEG start        00000000

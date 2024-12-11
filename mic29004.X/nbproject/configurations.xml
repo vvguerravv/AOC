@@ -14,6 +14,8 @@
                    projectFiles="true">
       <itemPath>aula1.ASM</itemPath>
       <itemPath>registradores.asm</itemPath>
+      <itemPath>sram.asm</itemPath>
+      <itemPath>vetores.asm</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1030,6 +1032,10 @@
         </AVR-ASM>
         <AVR-Global>
         </AVR-Global>
+      </item>
+      <item path="registradores.asm" ex="true" overriding="false">
+      </item>
+      <item path="sram.asm" ex="true" overriding="false">
       </item>
     </conf>
     <conf name="programming" type="2">

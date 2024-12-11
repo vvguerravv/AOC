@@ -21,6 +21,6 @@
   <FILE>dist/default/production/mic29004.X.production.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <start><FILE>registradores.asm</FILE><LINE>2</LINE></start>
+  <start><FILE>registradores.asm</FILE><LINE>18</LINE></start>
  </LABELS>
 </ASSEMBLER_INFO>
