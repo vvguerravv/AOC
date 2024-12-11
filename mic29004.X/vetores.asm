@@ -42,6 +42,15 @@
 	cpi R16,13
 	BRNE sum_seq
     
-    
+	
+	LDD R17,Y+3
+	LDD R18,Z+4
+	add R17,R18
+	ST X+,R17
+	
+	LDD R17,Y+8
+	LDD R18,Z+
+	add R17,R18
+	ST X+,R17
 	
     rjmp start
