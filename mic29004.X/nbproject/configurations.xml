@@ -16,6 +16,8 @@
       <itemPath>registradores.asm</itemPath>
       <itemPath>sram.asm</itemPath>
       <itemPath>vetores.asm</itemPath>
+      <itemPath>psicaled.asm</itemPath>
+      <itemPath>soma.asm</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1033,9 +1035,21 @@
         <AVR-Global>
         </AVR-Global>
       </item>
+      <item path="psicaled.asm" ex="true" overriding="false">
+      </item>
       <item path="registradores.asm" ex="true" overriding="false">
+        <AVR-ASM>
+        </AVR-ASM>
+        <AVR-Global>
+        </AVR-Global>
       </item>
       <item path="sram.asm" ex="true" overriding="false">
+        <AVR-ASM>
+        </AVR-ASM>
+        <AVR-Global>
+        </AVR-Global>
+      </item>
+      <item path="vetores.asm" ex="true" overriding="false">
       </item>
     </conf>
     <conf name="programming" type="2">
