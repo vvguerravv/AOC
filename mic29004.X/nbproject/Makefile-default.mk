@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=soma.asm
+SOURCEFILES_QUOTED_IF_SPACED=registradores_IO.asm
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/soma.obj
-POSSIBLE_DEPFILES=${OBJECTDIR}/soma.obj.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/registradores_IO.obj
+POSSIBLE_DEPFILES=${OBJECTDIR}/registradores_IO.obj.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/soma.obj
+OBJECTFILES=${OBJECTDIR}/registradores_IO.obj
 
 # Source Files
-SOURCEFILES=soma.asm
+SOURCEFILES=registradores_IO.asm
 
 # Pack Options 
 PACK_ASSEMBLER_OPTIONS=-I "${DFP_DIR}/avrasm/inc"  -i m328Pdef.inc
@@ -90,17 +90,17 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/soma.obj: soma.asm  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/registradores_IO.obj: registradores_IO.asm  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} ${DISTDIR} 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/soma.obj 
-	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp soma.asm
+	@${RM} ${OBJECTDIR}/registradores_IO.obj 
+	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp registradores_IO.asm
 else
-${OBJECTDIR}/soma.obj: soma.asm  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/registradores_IO.obj: registradores_IO.asm  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} ${DISTDIR} 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/soma.obj 
-	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp  -o ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.hex  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -l ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.lss soma.asm
+	@${RM} ${OBJECTDIR}/registradores_IO.obj 
+	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp  -o ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.hex  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -l ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.lss registradores_IO.asm
 endif
 
 # ------------------------------------------------------------------------------------

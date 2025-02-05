@@ -6,7 +6,7 @@
   <DIR>/opt/microchip/mplabx/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>soma.asm</SOURCE_FILE>
+ <SOURCE_FILE>registradores_IO.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>/opt/microchip/mplabx/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc/m328Pdef.inc</FILE>
  </INCLUDED_FILES>
@@ -14,17 +14,14 @@
   <FILE>dist/default/debug/mic29004.X.debug.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
-  <FILE>soma.hex</FILE>
+  <FILE>registradores_IO.hex</FILE>
  </HEX_FILES>
  <OUTPUT_FILES>
   <FILE>dist/default/debug/mic29004.X.debug.map</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <A><FILE>soma.asm</FILE><LINE>3</LINE></A>
-  <B><FILE>soma.asm</FILE><LINE>4</LINE></B>
-  <C><FILE>soma.asm</FILE><LINE>5</LINE></C>
-  <main><FILE>soma.asm</FILE><LINE>8</LINE></main>
-  <start><FILE>soma.asm</FILE><LINE>12</LINE></start>
-  <soma_loop><FILE>soma.asm</FILE><LINE>28</LINE></soma_loop>
+  <start><FILE>registradores_IO.asm</FILE><LINE>6</LINE></start>
+  <waitUM><FILE>registradores_IO.asm</FILE><LINE>17</LINE></waitUM>
+  <waitZERO><FILE>registradores_IO.asm</FILE><LINE>20</LINE></waitZERO>
  </LABELS>
 </ASSEMBLER_INFO>
