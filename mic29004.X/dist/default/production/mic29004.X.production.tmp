@@ -11,18 +11,19 @@
   <FILE>C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc\m328Pdef.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>dist/default/debug/mic29004.X.debug.obj</FILE>
+  <FILE>dist/default/production/mic29004.X.production.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
-  <FILE>ledss.hex</FILE>
+  <FILE>dist/default/production/mic29004.X.production.hex</FILE>
  </HEX_FILES>
  <OUTPUT_FILES>
-  <FILE>dist/default/debug/mic29004.X.debug.map</FILE>
+  <FILE>dist/default/production/mic29004.X.production.map</FILE>
+  <FILE>dist/default/production/mic29004.X.production.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
   <setup><FILE>ledss.asm</FILE><LINE>3</LINE></setup>
-  <main><FILE>ledss.asm</FILE><LINE>19</LINE></main>
-  <apaga_MSB><FILE>ledss.asm</FILE><LINE>39</LINE></apaga_MSB>
-  <apaga_LSB><FILE>ledss.asm</FILE><LINE>33</LINE></apaga_LSB>
+  <main><FILE>ledss.asm</FILE><LINE>10</LINE></main>
+  <apaga_MSB><FILE>ledss.asm</FILE><LINE>29</LINE></apaga_MSB>
+  <apaga_LSB><FILE>ledss.asm</FILE><LINE>23</LINE></apaga_LSB>
  </LABELS>
 </ASSEMBLER_INFO>

@@ -12,13 +12,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>aula1.ASM</itemPath>
       <itemPath>registradores.asm</itemPath>
       <itemPath>sram.asm</itemPath>
       <itemPath>vetores.asm</itemPath>
       <itemPath>psicaled.asm</itemPath>
       <itemPath>soma.asm</itemPath>
       <itemPath>registradores_IO.asm</itemPath>
+      <itemPath>ledss.asm</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -37,7 +37,7 @@
         <platformTool>Simulator</platformTool>
         <languageToolchain>AVRASM</languageToolchain>
         <languageToolchainVersion>2.2.7</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="ATmega_DFP" vendor="Microchip" version="3.0.158"/>
@@ -1030,12 +1030,6 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Tool>
-      <item path="aula1.ASM" ex="true" overriding="false">
-        <AVR-ASM>
-        </AVR-ASM>
-        <AVR-Global>
-        </AVR-Global>
-      </item>
       <item path="psicaled.asm" ex="true" overriding="false">
         <AVR-ASM>
         </AVR-ASM>
@@ -1048,7 +1042,17 @@
         <AVR-Global>
         </AVR-Global>
       </item>
+      <item path="registradores_IO.asm" ex="true" overriding="false">
+        <AVR-ASM>
+        </AVR-ASM>
+        <AVR-Global>
+        </AVR-Global>
+      </item>
       <item path="soma.asm" ex="true" overriding="false">
+        <AVR-ASM>
+        </AVR-ASM>
+        <AVR-Global>
+        </AVR-Global>
       </item>
       <item path="sram.asm" ex="true" overriding="false">
         <AVR-ASM>
@@ -2065,12 +2069,6 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Tool>
-      <item path="aula1.ASM" ex="false" overriding="false">
-        <AVR-ASM>
-        </AVR-ASM>
-        <AVR-Global>
-        </AVR-Global>
-      </item>
     </conf>
   </confs>
 </configurationDescriptor>

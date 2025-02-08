@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=mkdir -p
+MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=registradores_IO.asm
+SOURCEFILES_QUOTED_IF_SPACED=ledss.asm
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/registradores_IO.obj
-POSSIBLE_DEPFILES=${OBJECTDIR}/registradores_IO.obj.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ledss.obj
+POSSIBLE_DEPFILES=${OBJECTDIR}/ledss.obj.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/registradores_IO.obj
+OBJECTFILES=${OBJECTDIR}/ledss.obj
 
 # Source Files
-SOURCEFILES=registradores_IO.asm
+SOURCEFILES=ledss.asm
 
 # Pack Options 
 PACK_ASSEMBLER_OPTIONS=-I "${DFP_DIR}/avrasm/inc"  -i m328Pdef.inc
@@ -90,17 +90,17 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/registradores_IO.obj: registradores_IO.asm  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/ledss.obj: ledss.asm  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} ${DISTDIR} 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/registradores_IO.obj 
-	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp registradores_IO.asm
+	@${RM} ${OBJECTDIR}/ledss.obj 
+	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp ledss.asm
 else
-${OBJECTDIR}/registradores_IO.obj: registradores_IO.asm  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/ledss.obj: ledss.asm  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} ${DISTDIR} 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/registradores_IO.obj 
-	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp  -o ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.hex  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -l ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.lss registradores_IO.asm
+	@${RM} ${OBJECTDIR}/ledss.obj 
+	${MP_AS}  -fI -W+ie ${PACK_ASSEMBLER_OPTIONS} -d ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  -S ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.tmp  -o ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.hex  -m ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.map  -l ${DISTDIR}/mic29004.X.${IMAGE_TYPE}.lss ledss.asm
 endif
 
 # ------------------------------------------------------------------------------------
