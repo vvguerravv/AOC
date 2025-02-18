@@ -19,6 +19,7 @@
       <itemPath>soma.asm</itemPath>
       <itemPath>registradores_IO.asm</itemPath>
       <itemPath>ledss.asm</itemPath>
+      <itemPath>interrupcao.asm</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1030,6 +1031,8 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Tool>
+      <item path="ledss.asm" ex="true" overriding="false">
+      </item>
       <item path="psicaled.asm" ex="true" overriding="false">
         <AVR-ASM>
         </AVR-ASM>

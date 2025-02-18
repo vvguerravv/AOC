@@ -6,7 +6,7 @@
   <DIR>C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>ledss.asm</SOURCE_FILE>
+ <SOURCE_FILE>interrupcao.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/ATmega_DFP/3.0.158/avrasm/inc\m328Pdef.inc</FILE>
  </INCLUDED_FILES>
@@ -14,15 +14,17 @@
   <FILE>dist/default/debug/mic29004.X.debug.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
-  <FILE>ledss.hex</FILE>
+  <FILE>interrupcao.hex</FILE>
  </HEX_FILES>
  <OUTPUT_FILES>
   <FILE>dist/default/debug/mic29004.X.debug.map</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <setup><FILE>ledss.asm</FILE><LINE>3</LINE></setup>
-  <main><FILE>ledss.asm</FILE><LINE>19</LINE></main>
-  <apaga_MSB><FILE>ledss.asm</FILE><LINE>39</LINE></apaga_MSB>
-  <apaga_LSB><FILE>ledss.asm</FILE><LINE>33</LINE></apaga_LSB>
+  <setup><FILE>interrupcao.asm</FILE><LINE>31</LINE></setup>
+  <isr_on><FILE>interrupcao.asm</FILE><LINE>62</LINE></isr_on>
+  <isr_off><FILE>interrupcao.asm</FILE><LINE>77</LINE></isr_off>
+  <main><FILE>interrupcao.asm</FILE><LINE>50</LINE></main>
+  <delay><FILE>interrupcao.asm</FILE><LINE>97</LINE></delay>
+  <loop><FILE>interrupcao.asm</FILE><LINE>105</LINE></loop>
  </LABELS>
 </ASSEMBLER_INFO>
