@@ -109,7 +109,7 @@ loop:
   brne loop      ; Continua enquanto R18 > 0
   dec  R19       ; Decrementa R19
   brne loop      ; Continua enquanto R19 > 0
-  
+
   pop r17         
   out SREG, r17  ; Restaura valores de SREG,
   pop r18        ; ... r18,
