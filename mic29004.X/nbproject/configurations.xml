@@ -20,6 +20,8 @@
       <itemPath>registradores_IO.asm</itemPath>
       <itemPath>ledss.asm</itemPath>
       <itemPath>interrupcao.asm</itemPath>
+      <itemPath>aa_reg_io.asm</itemPath>
+      <itemPath>aa_GIPO_correcao.asm</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -38,7 +40,7 @@
         <platformTool>Simulator</platformTool>
         <languageToolchain>AVRASM</languageToolchain>
         <languageToolchainVersion>2.2.7</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <packs>
         <pack name="ATmega_DFP" vendor="Microchip" version="3.0.158"/>
@@ -1031,7 +1033,13 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Tool>
+      <item path="interrupcao.asm" ex="true" overriding="false">
+      </item>
       <item path="ledss.asm" ex="true" overriding="false">
+        <AVR-ASM>
+        </AVR-ASM>
+        <AVR-Global>
+        </AVR-Global>
       </item>
       <item path="psicaled.asm" ex="true" overriding="false">
         <AVR-ASM>
