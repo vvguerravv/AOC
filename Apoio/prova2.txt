@@ -1,58 +1,100 @@
-; Configuração do ATmega328P
-.include "m328Pdef.inc"
+    ; ------------------------------
+    ; DEFINIÇÕES
+    ; ------------------------------
+    .EQU MORE = PB0
+    .EQU LESS = PB1
 
-.org 0x00
-    rjmp RESET        ; Vetor de reset
+    ; ==============================================================
+    ;                           CONFIGURAÇÃO
+    ; ==============================================================
 
-RESET:
-    ldi r16, 0xFF    ; Configurar PORTB como saída (LEDs)
-    out DDRB, r16
-
-    ldi r16, 0x00    ; Configurar PORTD como entrada (botões)
+setup:
+    ; Configura todos os pinos do PORTD como saída (LEDs)
+    ldi r16, 0xFF
     out DDRD, r16
 
-    ldi r16, (1<<PD2) | (1<<PD3) ; Habilitar pull-up interno para botões
+    ; Desliga todos os LEDs no início
+    clr r16
     out PORTD, r16
 
-    ldi r17, 0x01   ; Inicializar LED na primeira posição
-    ldi r18, 1      ; Direção (1 = direita, -1 = esquerda)
+    ; Configura PB0 (MORE)  e PB1 (LESS) como entrada
+    cbi DDRB, MORE
+    cbi DDRB, LESS
 
-MAIN_LOOP:
-    out PORTB, r17  ; Atualizar LEDs
-    call DELAY_200ms
+    ; Habilita pull-up interno nos botões
+    sbi PORTB, MORE
+    sbi PORTB, LESS
 
-    in r19, PIND    ; Ler estado dos botões
-    sbrs r19, PD2   ; Se botão - pressionado
-    ldi r18, -1     ; Muda direção para esquerda
-    sbrs r19, PD3   ; Se botão + pressionado
-    ldi r18, 1      ; Muda direção para direita
+    ; Define LED inicial no bit mais significativo
+    ldi r17, 0b10000000
+    out PORTD, r17
 
-    tst r18         ; Verificar direção
-    brmi LEFT_SHIFT ; Se negativo, deslocar para esquerda
+    ; Estado inicial: direção para o menos significativo
+    ldi r18, 0  ; 0 = Direita, 1 = Esquerda
 
-    lsl r17         ; Caso contrário, deslocar para a direita
-    cpi r17, 0x00   ; Se atingir limite, reinicia
-    breq RESET_LED  
-    rjmp MAIN_LOOP
+    ; ==============================================================
+    ;                            LOOP PRINCIPAL
+    ; ==============================================================
+main:
+    sbic PINB, MORE
+    rjmp check_less
+    ldi r18, 1  ; Direção esquerda (mais significativo)
 
-LEFT_SHIFT:
-    lsr r17         ; Desloca para esquerda
-    cpi r17, 0x00   ; Se atingir limite, reinicia
-    breq RESET_LED  
-    rjmp MAIN_LOOP
+check_less:
+    sbic PINB, LESS
+    rjmp move_led
+    ldi r18, 0  ; Direção direita (menos significativo)
 
-RESET_LED:
-    ldi r17, 0x01   ; Reinicia LED
-    rjmp MAIN_LOOP
+move_led:
+    ; Apaga o LED atual
+    out PORTD, r16  
 
-; Rotina de Delay de 200ms
-DELAY_200ms:
-    ldi r20, 50     ; Ajuste baseado no clock do microcontrolador
-LOOP1:
-    ldi r21, 255
-LOOP2:
-    dec r21
-    brne LOOP2
-    dec r20
-    brne LOOP1
+    ; Atualiza a direção do LED
+    tst r18
+    breq shift_right
+    rjmp shift_left
+
+shift_right:
+    lsr r17        ; Desloca LED para a direita
+    breq reset_led ; Se atingiu 0, reinicia
+    out PORTD, r17
+    rjmp delay
+
+shift_left:
+    lsl r17        ; Desloca LED para a esquerda
+    breq reset_led ; Se atingiu 0, reinicia
+    out PORTD, r17
+    rjmp delay
+
+reset_led:
+    ldi r17, 0b10000000 ; Reinicia no LED mais significativo
+    out PORTD, r17
+    rjmp delay
+
+delay:
+    ldi r19, 16  ; Tempo de espera ~200ms
+    rcall delay_loop
+    rjmp main
+
+delay_loop:
+    push r17
+    push r18
+    in r17, SREG
+    push r17
+
+    clr r17
+    clr r18
+loop:
+    dec r17
+    brne loop
+    dec r18
+    brne loop
+    dec r19
+    brne loop
+
+    pop r17
+    out SREG, r17
+    pop r18
+    pop r17
+
     ret

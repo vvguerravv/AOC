@@ -23,11 +23,9 @@ start:
     LDI R16, 0x03  ; Habilita pull-ups internos nos botões
     OUT PORTB, R16
     
-    ; Configura interrupções externas
-    LDI R16, (1<<ISC01) | (0<<ISC00)  ; Configura INT0 para borda de descida
+    ; Configura interrupções externas corretamente
+    LDI R16, (1<<ISC01) | (0<<ISC00) | (1<<ISC11) | (0<<ISC10)  ; Ambos para borda de descida
     STS EICRA, R16
-    LDI R16, (1<<ISC11) | (0<<ISC10)  ; Configura INT1 para borda de descida
-    STS EICRA+1, R16
     
     LDI R16, (1<<INT0) | (1<<INT1)  ; Habilita interrupções externas INT0 e INT1
     STS EIMSK, R16
@@ -62,12 +60,16 @@ continue_left:
 
 ; Rotina de interrupção para botão +
 button_plus_isr:
+    CLI          ; Desabilita interrupções temporariamente
     LDI R18, 0x01  ; Muda a direção para mais significativo
+    SEI          ; Habilita interrupções globais novamente
     RETI
 
 ; Rotina de interrupção para botão -
 button_minus_isr:
+    CLI          ; Desabilita interrupções temporariamente
     LDI R18, 0x00  ; Muda a direção para menos significativo
+    SEI          ; Habilita interrupções globais novamente
     RETI
 
 ; Rotina de delay de aproximadamente 200ms
