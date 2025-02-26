@@ -1,0 +1,73 @@
+.DSEG
+A1: .BYTE 12   ; Vetor A1 com 12 posições de 8 bits
+A2: .BYTE 12   ; Vetor A2 com 12 posições de 8 bits
+A3: .BYTE 12   ; Vetor A3 com 12 posições de 8 bits
+A4: .BYTE 3    ; Vetor A4 com 3 posições de 8 bits
+
+.CSEG
+.ORG 0x00
+    RJMP START
+
+.ORG 0x30  ; Código começa em 0x30
+START:
+    LDI R16, 1       ; Inicializa contador
+    LDI ZL, LOW(A2)  ; Ponteiro Z aponta para A2
+    LDI ZH, HIGH(A2)
+    LDI YL, LOW(A3)  ; Ponteiro Y aponta para A3
+    LDI YH, HIGH(A3)
+
+LOAD_LOOP:
+    ST Z+, R16       ; Armazena R16 em A2 e incrementa Z
+    ST Y+, R16       ; Armazena R16 em A3 e incrementa Y
+    INC R16          ; Incrementa valor
+    CPI R16, 13      ; Verifica se chegou a 13
+    BRNE LOAD_LOOP
+
+    ; Soma A2(i) + A3(12-i) e salva em A1(i)
+    LDI ZL, LOW(A2)
+    LDI ZH, HIGH(A2)
+    LDI YL, LOW(A3+12)
+    LDI YH, HIGH(A3+12)
+    LDI XL, LOW(A1)
+    LDI XH, HIGH(A1)
+    LDI R17, 12      ; Contador de iterações
+
+SUM_LOOP:
+    LD R18, Z+       ; Carrega A2(i)
+    LD R19, -Y       ; Carrega A3(12-i)
+    ADD R18, R19     ; Soma
+    ST X+, R18       ; Armazena em A1(i)
+    DEC R17          ; Decrementa contador
+    BRNE SUM_LOOP    ; Repete até terminar
+
+    ; Soma valores específicos e salva em A4
+    LDI ZL, LOW(A2+1)  ; A2(2)
+    LDI ZH, HIGH(A2+1)
+    LD R18, Z
+    LDI YL, LOW(A3+4)  ; A3(5)
+    LDI YH, HIGH(A3+4)
+    LD R19, Y
+    ADD R18, R19
+    LDI XL, LOW(A4)    ; Ponteiro para A4
+    LDI XH, HIGH(A4)
+    ST X+, R18
+
+    LDI ZL, LOW(A2+2)  ; A2(3)
+    LDI ZH, HIGH(A2+2)
+    LD R18, Z
+    LDI YL, LOW(A3+3)  ; A3(4)
+    LDI YH, HIGH(A3+3)
+    LD R19, Y
+    ADD R18, R19
+    ST X+, R18
+
+    LDI ZL, LOW(A2+7)  ; A2(8)
+    LDI ZH, HIGH(A2+7)
+    LD R18, Z
+    LDI YL, LOW(A3+8)  ; A3(9)
+    LDI YH, HIGH(A3+8)
+    LD R19, Y
+    ADD R18, R19
+    ST X+, R18
+
+    RJMP .

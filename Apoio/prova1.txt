@@ -1,0 +1,87 @@
+;========================================
+; Declaração de memória para os vetores
+;========================================
+.DSEG
+V0: .BYTE 10  ; Vetor de 10 bytes
+V1: .BYTE 10  ; Vetor de 10 bytes
+VR: .BYTE 10  ; Vetor de 10 bytes
+
+;========================================
+; Código
+;========================================
+.CSEG
+.ORG 0x00
+    RJMP MAIN  ; Pula para o código principal
+
+;========================================
+; Sub-rotina: init_array
+; Inicializa um vetor com valores sequenciais
+;========================================
+init_array:
+    PUSH R0   ; Salva contexto
+    PUSH R22
+    MOV R22, R21  ; R22 = Valor inicial
+init_loop:
+    ST X+, R22  ; Armazena valor e incrementa
+    ponteiro X
+    INC R22     ; Incrementa valor
+    DEC R20     ; Decrementa tamanho
+    BRNE init_loop  ; Se não for zero, continua
+    POP R22
+    POP R0
+    RET
+
+;========================================
+; Sub-rotina: copy_array
+; Copia os dados de um vetor para outro
+;========================================
+copy_array:
+    PUSH R0  ; Salva contexto
+copy_loop:
+    LD R0, X+  ; Carrega valor do vetor origem
+    ST Y+, R0  ; Armazena no vetor destino
+    DEC R20    ; Decrementa tamanho
+    BRNE copy_loop  ; Continua se não for zero
+    POP R0
+    RET
+
+;========================================
+; Sub-rotina: reverse_array
+; Copia os dados de um vetor para outro de forma reversa
+;========================================
+reverse_array:
+    PUSH R0  ; Salva contexto
+rev_loop:
+    LD R0, X+  ; Carrega valor do vetor origem
+    ST -Y, R0  ; Armazena no vetor destino (decrementando Y)
+    DEC R20    ; Decrementa tamanho
+    BRNE rev_loop  ; Continua se não for zero
+    POP R0
+    RET
+
+;========================================
+; Código principal de teste
+;========================================
+MAIN:
+    LDI R20, 10  ; Tamanho do vetor
+    LDI R21, 20  ; Valor inicial (20)
+    LDI XH, HIGH(V0)  ; Ponteiro para V0
+    LDI XL, LOW(V0)
+    RCALL init_array  ; Inicializa V0 com valores de 20 a 29
+
+    LDI R20, 10  ; Tamanho do vetor
+    LDI XH, HIGH(V0)  ; Ponteiro para V0
+    LDI XL, LOW(V0)
+    LDI YH, HIGH(V1)  ; Ponteiro para V1
+    LDI YL, LOW(V1)
+    RCALL copy_array  ; Copia V0 para V1
+
+    LDI R20, 10  ; Tamanho do vetor
+    LDI XH, HIGH(V1)  ; Ponteiro para V1
+    LDI XL, LOW(V1)
+    LDI YH, HIGH(VR+10)  ; Ponteiro para o final de VR +1
+    LDI YL, LOW(VR+10)
+    RCALL reverse_array  ; Copia V1 para VR de forma reversa
+
+LOOP:
+    RJMP LOOP  ; Loop infinito

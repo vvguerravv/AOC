@@ -1,0 +1,84 @@
+; Configuração inicial
+.INCLUDE "m328Pdef.inc"
+
+.ORG 0x00
+    RJMP start
+
+.ORG 0x0002  ; Vetor de interrupção para INT0 (botão -)
+    RJMP button_minus_isr
+
+.ORG 0x0004  ; Vetor de interrupção para INT1 (botão +)
+    RJMP button_plus_isr
+
+.ORG 0x0020  ; Ponto de início do código principal
+start:
+    ; Configura GPIOs
+    LDI R16, 0xFF  ; Configura PORTD como saída (LEDs nos pinos PD0 a PD7)
+    OUT DDRD, R16
+    LDI R16, 0x00  ; Garante que os LEDs iniciam apagados
+    OUT PORTD, R16
+    
+    LDI R16, 0x00  ; Configura PORTB como entrada (botões em PB0 e PB1)
+    OUT DDRB, R16
+    LDI R16, 0x03  ; Habilita pull-ups internos nos botões
+    OUT PORTB, R16
+    
+    ; Configura interrupções externas
+    LDI R16, (1<<ISC01) | (0<<ISC00)  ; Configura INT0 para borda de descida
+    STS EICRA, R16
+    LDI R16, (1<<ISC11) | (0<<ISC10)  ; Configura INT1 para borda de descida
+    STS EICRA+1, R16
+    
+    LDI R16, (1<<INT0) | (1<<INT1)  ; Habilita interrupções externas INT0 e INT1
+    STS EIMSK, R16
+    
+    SEI  ; Habilita interrupções globais
+
+    LDI R17, 0x01  ; LED inicial na posição menos significativa
+    LDI R18, 0x01  ; Direção inicial (para MSB)
+
+main_loop:
+    OUT PORTD, R17  ; Atualiza LEDs
+    CALL delay_200ms
+    
+    ; Atualiza posição do LED
+    TST R18
+    BREQ move_left
+move_right:
+    LSL R17
+    CPI R17, 0x00
+    BRNE continue
+    LDI R17, 0x01  ; Reinicia do primeiro LED
+continue:
+    RJMP main_loop
+
+move_left:
+    LSR R17
+    CPI R17, 0x00
+    BRNE continue_left
+    LDI R17, 0x80  ; Reinicia do último LED
+continue_left:
+    RJMP main_loop
+
+; Rotina de interrupção para botão +
+button_plus_isr:
+    LDI R18, 0x01  ; Muda a direção para mais significativo
+    RETI
+
+; Rotina de interrupção para botão -
+button_minus_isr:
+    LDI R18, 0x00  ; Muda a direção para menos significativo
+    RETI
+
+; Rotina de delay de aproximadamente 200ms
+; Assume clock de 16MHz
+
+.EQU DELAY_CYCLES = 31250  ; Aproximadamente 200ms para 16MHz
+
+delay_200ms:
+    LDI R20, HIGH(DELAY_CYCLES)
+    LDI R21, LOW(DELAY_CYCLES)
+loop_delay:
+    SBIW R20, 1
+    BRNE loop_delay
+    RET
